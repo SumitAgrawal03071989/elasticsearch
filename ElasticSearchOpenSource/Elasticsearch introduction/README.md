@@ -1,5 +1,7 @@
 # Elasticsearch introduction.
 
+## Data in: documents and indices 
+
 Elasticsearch is a distributed document store. 
 Instead of storing information as rows of columnar data, Elasticsearch stores complex data structures that have been serialized as JSON documents.
 
@@ -16,3 +18,5 @@ Defining your own mappings enables you to:
 - Optimize fields for partial matching
 - Use custom date formats
 - Use data types such as geo_point and geo_shape that cannot be automatically detected
+
+## Information out: search and analyse
