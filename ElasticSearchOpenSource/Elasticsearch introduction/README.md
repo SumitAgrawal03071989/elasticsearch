@@ -7,3 +7,12 @@ Documents are indexed and fully searchable in near real-time-- within 1 second. 
 
 Elasticsearch indexes all data in every field and each indexed field has a dedicated, optimized data structure. For example, text fields are stored in inverted indices, and numeric and geo fields are stored in BKD trees.
 
+You can define rules to control dynamic mapping and explicitly define mappings to take full control of how fields are stored and indexed.
+
+Defining your own mappings enables you to:
+
+- Distinguish between full-text string fields and exact value string fields
+- Perform language-specific text analysis
+- Optimize fields for partial matching
+- Use custom date formats
+- Use data types such as geo_point and geo_shape that cannot be automatically detected
