@@ -1,0 +1,11 @@
+// CERATE DOCUMENT 
+PUT /customer/_doc/1
+{
+  "name": "John Doe"
+}
+
+
+// RETRIVE DOCUMENT
+GET /customer/_doc/1
+
+
