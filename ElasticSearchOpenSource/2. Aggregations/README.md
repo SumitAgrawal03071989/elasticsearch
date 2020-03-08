@@ -187,8 +187,15 @@ POST /sales/_search?size=0
 
 ## Counts are approximate
 
+Computing exact counts requires loading values into a hash set and returning its size. This doesn’t scale when working on high-cardinality sets and/or large values as the required memory usage and the need to communicate those per-shard sets between nodes would utilize too many resources of the cluster.
 
+This cardinality aggregation is based on the HyperLogLog++ algorithm, which counts based on the hashes of the values with some interesting properties:
 
+- configurable precision, which decides on how to trade memory for accuracy
+- excellent accuracy on low-cardinality sets
+- fixed memory usage: no matter if there are tens or billions of unique values, memory usage only depends on the configured precision
+
+**Please also note that even with a threshold as low as 100, the error remains very low, even when counting millions of items.**
 
 
 
