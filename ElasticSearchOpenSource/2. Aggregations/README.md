@@ -154,6 +154,7 @@ The three values (1, 2, and 3) will be included as independent values, all with 
 
 ```
 
-The aggregation returns 2.0 as the result, which matches what we would expect when calculating by hand: ```((1*2) + (2*2) + (3*2)) / (2+2+2) == 2```
+The aggregation returns 2.0 as the result, which matches what we would expect when calculating by hand:
+```((1*2) + (2*2) + (3*2)) / (2+2+2) == 2```
 
 
