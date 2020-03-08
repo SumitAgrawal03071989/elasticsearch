@@ -37,7 +37,7 @@ In addition to searching for individual terms, you can perform phrase searches, 
 Elasticsearch aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
 
 
-### Installation elastic search.
+### Installation elastic search
 
 Download the Elasticsearch archive for your OS:
 
@@ -53,4 +53,27 @@ Move it to /usr/local/elasticsearch-7.6.0
 ```
 cd elasticsearch-7.6.0/bin
 ./elasticsearch
+```
+
+
+```
+curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
+
+// GET HEALTH 
+curl -XGET 'http://localhost:9200/_cat/health?v'
+
+// INDEX SOME DOCUMENT
+curl -XPUT 'http://localhost:9200/customer/_doc/1' -H 'Content-Type: application/json' -d '{ "name": "John Doe" }' 
+
+// GET CUSTOMER
+curl -XGET 'http://localhost:9200/customer/_doc/1'
+
+// BULK LOAD ACCOUNT DATA
+curl -H "Content-Type: application/x-ndjson" -XPOST "localhost:9200/bank/_bulk?pretty&refresh" --data-binary "@/Users/sumitagrawal/PSpace/Projects/elasticsearch/resources/accounts.json"
+
+// GET STATUS
+curl "localhost:9200/_cat/indices?v"
+
+curl -H "Content-Type: application/x-ndjson" -XGET 'http://localhost:9200/bank/_search' -d '{ "query": { "match_all": {} }, "sort": [ { "account_number": "asc" } ] }'
+
 ```
