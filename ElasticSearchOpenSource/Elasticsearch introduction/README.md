@@ -55,7 +55,7 @@ cd elasticsearch-7.6.0/bin
 ./elasticsearch
 ```
 
-
+## Talking to ES with curl command
 ```
 curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
 
@@ -77,3 +77,17 @@ curl "localhost:9200/_cat/indices?v"
 curl -H "Content-Type: application/x-ndjson" -XGET 'http://localhost:9200/bank/_search' -d '{ "query": { "match_all": {} }, "sort": [ { "account_number": "asc" } ] }'
 
 ```
+
+
+## Start Kibana ( pre-requisite, kibana needs to be installed )
+- Go to kibana installation folder.
+- Go to bin directory
+- Start Kibana
+
+```
+./kibana
+```
+
+With Kibana Dev Tools, We can interact with ES for indexing and querying / searching data.
+
+
