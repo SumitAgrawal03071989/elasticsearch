@@ -65,6 +65,54 @@ POST /kibana_sample_data_ecommerce/_search?size=0
 }
 ```
 
+### Missing value
+The missing parameter defines how documents that are missing a value should be treated. By default they will be ignored but it is also possible to treat them as if they had a value.
+
+```
+POST /kibana_sample_data_ecommerce/_search?size=0
+{
+    "aggs" : {
+        "avg_base_price" : {
+          "avg" : { 
+            "field": "products.taxless_price", 
+            "missing": 10, 
+            "script": {
+              "source": "_value"
+            }
+          }
+        }
+    }
+}
+```
+
+
+# Weighted average
+
+When calculating a regular average, each datapoint has an equal "weight" …​ it contributes equally to the final value. Weighted averages, on the other hand, weight each datapoint differently. The amount that each datapoint contributes to the final value is extracted from the document, or provided by a script.
+
+As a formula, a weighted average is the ```∑(value * weight) / ∑(weight)1```
+
+A regular average can be thought of as a weighted average where every value has an implicit weight of 1.
+
+```
+POST /kibana_sample_data_ecommerce/_search?size=0
+{
+    "aggs" : {
+        "weighted_price" : {
+          "weighted_avg":{
+            "value":{
+              "field":"products.price"
+            },
+            "weight": {
+              "field":"taxful_total_price"
+            }
+          }
+        }  
+    }
+}
+```
+
+
 
 
 
