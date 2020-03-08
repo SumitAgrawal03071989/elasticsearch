@@ -113,7 +113,47 @@ POST /kibana_sample_data_ecommerce/_search?size=0
 ```
 
 
+While multiple values-per-field are allowed, only one weight is allowed.
 
+```
+POST /exams/_doc?refresh
+{
+    "grade": [1, 2, 3],
+    "weight": 2
+}
 
+POST /exams/_search
+{
+    "size": 0,
+    "aggs" : {
+        "weighted_grade": {
+            "weighted_avg": {
+                "value": {
+                    "field": "grade"
+                },
+                "weight": {
+                    "field": "weight"
+                }
+            }
+        }
+    }
+}
+```
+
+The three values (1, 2, and 3) will be included as independent values, all with the weight of 2:
+
+```
+{
+    ...
+    "aggregations": {
+        "weighted_grade": {
+            "value": 2.0
+        }
+    }
+}
+
+```
+
+The aggregation returns 2.0 as the result, which matches what we would expect when calculating by hand: ```((1*2) + (2*2) + (3*2)) / (2+2+2) == 2```
 
 
