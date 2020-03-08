@@ -20,3 +20,20 @@ Defining your own mappings enables you to:
 - Use data types such as geo_point and geo_shape that cannot be automatically detected
 
 ## Information out: search and analyse
+
+
+### Searching your data
+
+The Elasticsearch REST APIs support structured queries, full text queries, and complex queries that combine the two
+
+In addition to searching for individual terms, you can perform phrase searches, similarity searches, and prefix searches, and get autocomplete suggestions.
+
+- JSON-style query language (Query DSL)
+- You can also construct SQL-style queries 
+
+
+### Analyzing your data
+
+Elasticsearch aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
+
+
