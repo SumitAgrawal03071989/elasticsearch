@@ -158,3 +158,40 @@ The aggregation returns 2.0 as the result, which matches what we would expect wh
 ```((1*2) + (2*2) + (3*2)) / (2+2+2) == 2```
 
 
+# Cardinality Aggregation
+calculates an approximate count of distinct values.
+
+## Precision control
+precision_threshold
+
+```
+POST /sales/_search?size=0
+{
+    "aggs" : {
+        "type_count" : {
+            "cardinality" : {
+                "field" : "type",
+                "precision_threshold": 100 
+            }
+        }
+    }
+}
+```
+
+
+- The precision_threshold options allows to trade memory for accuracy
+- Defines a unique count below which counts are expected to be close to accurate.
+- Above this value, counts might become a bit more fuzzy
+- The maximum supported value is 40000
+- default value is 3000
+
+## Counts are approximate
+
+
+
+
+
+
+
+
+
