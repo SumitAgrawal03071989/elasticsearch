@@ -37,15 +37,15 @@ In addition to searching for individual terms, you can perform phrase searches, 
 Elasticsearch aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
 
 
-Installation elastic search.
+### Installation elastic search.
 
-### Download the Elasticsearch archive for your OS:
+Download the Elasticsearch archive for your OS:
 
 ```
 https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.0-darwin-x86_64.tar.gz
 ```
 
-### Extract the archive
+ Extract the archive
 ```
 Move it to /usr/local/elasticsearch-7.6.0
 ```
