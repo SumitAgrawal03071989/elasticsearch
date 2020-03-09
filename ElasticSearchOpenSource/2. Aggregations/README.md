@@ -161,18 +161,21 @@ The aggregation returns 2.0 as the result, which matches what we would expect wh
 # Cardinality Aggregation
 calculates an approximate count of distinct values.
 
+
+
+
 ## Precision control
 precision_threshold
 
 ```
-POST /sales/_search?size=0
+POST /kibana_sample_data_ecommerce/_search?size=0
 {
     "aggs" : {
-        "type_count" : {
-            "cardinality" : {
-                "field" : "type",
-                "precision_threshold": 100 
-            }
+        "count_test" : {
+          "cardinality" : { 
+            "field": "order_id",
+            "precision_threshold": 5000
+          }
         }
     }
 }
@@ -196,6 +199,28 @@ This cardinality aggregation is based on the HyperLogLog++ algorithm, which coun
 - fixed memory usage: no matter if there are tens or billions of unique values, memory usage only depends on the configured precision
 
 **Please also note that even with a threshold as low as 100, the error remains very low, even when counting millions of items.**
+
+
+# Extended Stats Aggregation
+
+The extended_stats aggregations is an extended version of the stats aggregation, where additional metrics are added such as sum_of_squares, variance, std_deviation and std_deviation_bounds.
+
+
+```
+POST /kibana_sample_data_ecommerce/_search?size=0
+{
+    "aggs" : {
+        "extended_stats_test" : {
+          "extended_stats" : { 
+            "field": "products.price"
+          }
+        }
+    }
+}
+```
+
+
+
 
 
 
