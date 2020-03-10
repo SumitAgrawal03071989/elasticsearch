@@ -118,6 +118,68 @@ GET /_search
 
 The full text queries enable you to search **analyzed text fields** such as the body of an email. The query string is processed using the same analyzer that was applied to the field during indexing.
 
+## Intervals:
+Returns documents based on the order and proximity of matching terms.
+
+The intervals query uses matching rules, constructed from a small set of definitions. These rules are then applied to terms from a specified field.
+
+```
+POST /kibana_sample_data_ecommerce/_search
+{
+  "query": {
+    "intervals":{
+      "customer_full_name":{
+        "all_of":{
+          "intervals":[
+            {
+              "match":{
+                "query" : "Mary",
+                "max_gaps" : 0,
+                "ordered" : true
+              }
+            },
+            {
+              "any_of":{
+                "intervals":{
+                  "match": { "query":"Bailey"}
+                }
+              }
+            }
+          ] 
+        }
+      }
+    }
+  }  
+}
+```
+
+##Top-level parameters for intervals
+
+## <field> 
+  (Required, rule object) Field you wish to search. 
+
+## "match" rule parameter 
+  The match rule matches analyzed text.
+
+  ```query``` --> Text you wish to find in the provided <field>.
+
+  ```max_gaps``` --> (Optional, integer) Maximum number of positions between the matching terms.
+
+  ```ordered``` --> (Optional, boolean) If true, matching terms must appear in their specified order. Defaults to false.
+
+  ``` analyzer``` --> (Optional, string) analyzer used to analyze terms in the query. Defaults to the top-level <field>'s analyzer. 
+
+  ``` filter ``` --> (Optional, interval filter rule object) An optional interval filter.
+
+  ``` use_field ``` --> need to understand aim of this.
+
+## "prefix" rule parameter
+
+The prefix rule matches terms that start with a specified set of characters. This prefix can expand to match at most 128 terms. If the prefix matches more than 128 terms, Elasticsearch returns an error. You can use the index-prefixes option in the field mapping to avoid this limit.
+
+
+
+
 
 
 
