@@ -9,7 +9,9 @@ Move it to /usr/local/elasticsearch-7.6.0
 cd elasticsearch-7.6.0/bin
 ./elasticsearch
 
-AAHAAAA .. its started....
+to Start Kibana
+cd /usr/local/kibana-7.6.0/bin/
+./kibana
 
 
 
