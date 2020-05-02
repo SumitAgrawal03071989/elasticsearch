@@ -10,6 +10,7 @@ cd elasticsearch-7.6.0/bin
 ./elasticsearch
 
 AAHAAAA .. its started....
+ 
 
 
 
@@ -29,8 +30,6 @@ curl -H "Content-Type: application/x-ndjson" -XPOST "localhost:9200/bank/_bulk?p
 
 // GET STATUS
 curl "localhost:9200/_cat/indices?v"
-
-
 
 curl -H "Content-Type: application/x-ndjson" -XGET 'http://localhost:9200/bank/_search' -d '{ "query": { "match_all": {} }, "sort": [ { "account_number": "asc" } ] }'
 
