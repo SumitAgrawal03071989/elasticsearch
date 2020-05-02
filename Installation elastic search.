@@ -9,10 +9,13 @@ Move it to /usr/local/elasticsearch-7.6.0
 cd elasticsearch-7.6.0/bin
 ./elasticsearch
 
+
+to Start Kibana
+cd /usr/local/kibana-7.6.0/bin/
+./kibana
+
+
 AAHAAAA .. its started....
- 
-
-
 
 curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
 
